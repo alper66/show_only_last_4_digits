@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class FMax_MinDiffInArrays {
     static int numEl;
     static int reference;
+    static int result;
     static int arr [];
     static Scanner input=new Scanner(System.in);
     public static void main(String[] args) {
@@ -26,14 +27,16 @@ public class FMax_MinDiffInArrays {
     }
     public static void findMinimumDiff(){
 
-        reference = arr[1] - arr[0];
+         reference = arr[1] - arr[0];
         for (int i = 0; i < arr.length; i++) {
             for (int k = i + 1; k < arr.length; k++) {
-                int result = arr[k] - arr[i];
-                if (result < reference) {
-                    reference = result;}
-                if (arr[k]-arr[i]==reference){
-                    System.out.println("Minimum difference pair is "+arr[i]+" and "+arr[k]+" difference is : "+(arr[k]-arr[i]));
+               result=arr[k]-arr[i];
+                reference=Math.min(reference,result);
+            }}
+        for (int i = 0; i < arr.length; i++) {
+            for (int k = i + 1; k < arr.length; k++) {
+                if(arr[k]-arr[i]==reference){
+                    System.out.println("Minimum difference pair is "+arr[k]+"-"+arr[i]+" difference is : "+reference);
                 }}}}
     public static void getMaxDiff() {
         int maxD = arr[arr.length - 1] - arr[0];
